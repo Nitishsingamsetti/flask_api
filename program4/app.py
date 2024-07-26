@@ -1,12 +1,19 @@
 from flask import Flask,request,render_template,redirect,url_for
 app=Flask(__name__)
 
-@app.route('/index')
-def home():
+# @app.route('/index')
+# def home():
     # name=request.args.get('username')
     # return render_template('index.html',uname=name)
-    name=int(request.args.get('marks'))
-    return render_template('index.html',marks=name)    
+    # name=int(request.args.get('marks'))
+    # return render_template('index.html',marks=name)    
+
+@app.route('/yr')
+def leap():
+    y_r=int(request.args.get('year'))
+    return render_template('index.html',year=y_r)
+    
+    
 
 @app.route('/result/<int:marks>')
 def result(marks):

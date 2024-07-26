@@ -6,15 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <center>
-        <p>
-            {{marks}}
-        </p>
-    </center>
-    {% if marks>=35 and marks<=100 %}
-    <p> you passed</p>
+    
+
+    {{year}}
+    {% if year%400==0 and year%100!=0 %}
+    <p>leap year</p>
     {% else %}
-    <p>you failed</p>
+    <p>not a leap year</p>
     {% endif %}
+
+    
 </body>
 </html>
