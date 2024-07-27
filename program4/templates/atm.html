@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: rgb(92, 158, 180);
+        }
+        h1{
+            color: rgb(207, 99, 120);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        p{
+            color: whitesmoke;
+            font-family: serif;
+        }
+        
+        input{
+            width: 30%;
+            padding: 3px;
+            border-radius: 10px;
+            background-color: beige;
+            margin-bottom: 15px;
+        }
+        label{
+            font-weight: 800;
+            margin-bottom: 0%;
+        }
+        button{
+            background-color: ghostwhite;
+            padding: 5px;
+            width: 20%;
+            margin-top: 20px
+            
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-weight: bolder;
+            margin-left: 45%;
+            margin-top: 10%;
+            
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <center>
+        <h1>WELCOME TO PAYTM PAGE</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita unde eaque id, tempore illum laudantium. Minus earum eius ipsum nam.
+        </p>
+
+    </center>
+    <form method="post" action="{{url_for('index')}}">
+        <label><h2>Account-no:</h2></label>
+        <input type="number" placeholder="acc.no" name="acc"></br>
+
+        <label><h2>Pin-no:</h2></label>
+        <input type="password" placeholder="pin-no." name="pin"></br>
+
+        <button>Submit</button>
+       </form>
+
+       <a href="{{url_for('alreadyacc')}}">Account already exists</a>
+</body>
+</html>
