@@ -29,11 +29,53 @@ def alreadyacc():
         if accno in accounts:
             accounts_lists=[{'account_id':accno,'pinno':details['pin']} for accno,details in accounts.items()]
             if pinno==accounts_lists[0]['pinno']:
-                return redirect(url_for('panel.html'))
+                return redirect(url_for('panel',accno=accno,pinno=pinno))
             else:
                 return 'Invalid pin',400
     
     return render_template('login.html')
+
+@app.route('/panel/<accno>/<pinno>')
+def panel(accno,pinno):
+    return render_template('options.html',accno=accno,pinno=pinno)
+
+@app.route('/deposite/<accno>/<pinno>',methods=['GET','POST'])
+def deposite(accno,pinno):
+    if request.method=='POST':
+        amount=int(request.form['depo'])
+        print(amount)
+        accounts_lists=[{'account_id':accno,'balance':details['balance']} for accno,details in accounts.items()]
+        if accounts_lists[0]['account_id']==accno:
+            accounts_lists[0]['balance']+=amount
+        print(accounts_lists)
+        
+        accounts[accno]['balance']=accounts_lists[0]['balance']
+    return render_template('depo.html')
+
+@app.route('/withdraw/<accno>/<pinno>',methods=['GET','POST'])
+def withdraw(accno,pinno):
+    if request.method=='POST':
+        amount=int(request.form['withd'])
+        print(amount)
+        accounts_lists=[{'account_id':accno,'balance':details['balance']} for accno,details in accounts.items()]
+        if accounts_lists[0]['account_id']==accno:
+            oramount=accounts_lists[0]['balance']
+        if amount>oramount:
+            return 'given amount is out of balance'
+        else:
+            accounts_lists[0]['balance']-=amount
+            
+        print(accounts_lists)
+        accounts[accno]['balance']=accounts_lists[0]['balance']
+        
+    return render_template('withdw.html')
+
+#@app.route('/balance/<accno>/<pinno>')
+
+#def balance(accno,pinno):
+    
+
+
             
     
 
