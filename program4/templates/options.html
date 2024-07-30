@@ -12,7 +12,7 @@
     <div class="container">
         <a href="{{url_for('deposite',accno=accno,pinno=pinno)}}"><button style="background-color: blue;"> Deposit</button></a>
         <a href="{{url_for('withdraw',accno=accno,pinno=pinno)}}"><button style="background-color: red;">Withdraw</button></a>
-        <a href=""><button style="background-color: green;">Balance</button></a>
+        <a href="{{url_for('balance',accno=accno,pinno=pinno)}}"><button style="background-color: green;">Balance</button></a>
     </div>
 </body>
 
